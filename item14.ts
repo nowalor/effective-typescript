@@ -24,7 +24,40 @@ interface TopNavState2 {
 
 // Mapped type, here we cannot use an interface
 // Basically a more programmatic way to achieve the power off "TopNavState2"
-// Personal favorite
+// Personal favorite since it has the least "magic" and I don't have to remember another built in type
 type TopNavState3 = {
   [k in "userId" | "pageTitle" | "recentFiles"]: State[k];
 };
+
+// "Pick is also pretty nice"
+// type Pick<T, K extends keyof T> = { [P in K]: T[P]; }
+type TopNavState4 = Pick<State, "userId" | "pageTitle" | "recentFiles">;
+
+interface Options {
+  width: number;
+  height: number;
+  color: string;
+  label: string;
+}
+
+// Example one
+// Hard coded and not connected at all to "Option"
+interface OptionsUpdate {
+  width?: number;
+  height?: number;
+  color?: string;
+  label?: string;
+}
+
+class UIWidget {
+  constructor(init: Options) {}
+  update(options: OptionsUpdate) {}
+}
+
+// Mapped type + keyof operator
+// Used to programatically resolve whatever is in "Options"
+// And make it optional
+type OptionsUpdate2 = { [k in keyof Options]?: Options[k] };
+
+// Same as above but with a built in Partial type
+type OptionsUpdate3 = Partial<Options>;
