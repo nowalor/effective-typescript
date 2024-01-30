@@ -73,3 +73,6 @@ const couple1: DancingDuo<Name> = [
   { first: "Nikulás", last: "Óskarsson" },
   { first: "Joseph", last: "Gericke" },
 ];
+
+// Don't quite understand that one... should revisit
+const DancingDuoFunc = <T extends Name>(x: DancingDuo<T>) => x;
