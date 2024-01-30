@@ -62,9 +62,14 @@ type OptionsUpdate2 = { [k in keyof Options]?: Options[k] };
 // Same as above but with a built in Partial type// Same as above but with a built in Partial type
 type OptionsUpdate3 = Partial<Options>;
 
-interface name {
+interface Name {
   first: string;
   last: string;
 }
 
-type DancingDuo<T extends name> = [T, T];
+type DancingDuo<T extends Name> = [T, T];
+
+const couple1: DancingDuo<Name> = [
+  { first: "Nikulás", last: "Óskarsson" },
+  { first: "Joseph", last: "Gericke" },
+];
