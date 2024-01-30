@@ -59,5 +59,12 @@ class UIWidget {
 // And make it optional
 type OptionsUpdate2 = { [k in keyof Options]?: Options[k] };
 
-// Same as above but with a built in Partial type
+// Same as above but with a built in Partial type// Same as above but with a built in Partial type
 type OptionsUpdate3 = Partial<Options>;
+
+interface name {
+  first: string;
+  last: string;
+}
+
+type DancingDuo<T extends name> = [T, T];
