@@ -16,3 +16,17 @@ const rocket: Rocket = {
 };
 
 const emptyRocket: Rocket = {}; // ok
+
+// Obvious improvement using an interface
+
+interface RockerInterface {
+  name: string;
+  variant: string;
+  thrust: number;
+}
+
+const falconHeavy: RockerInterface = {
+  name: "Falcon heavy",
+  variant: "v1",
+  thrust: 15_200,
+};
