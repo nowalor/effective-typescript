@@ -81,3 +81,12 @@ declare let csvData: ProductRow[];
  * Being careful to not make assumptions about the data structure would be beneficial
  */
 const products = parseCSV(example1CSV) as unknown as ProductRow[];
+
+function saveParseCSV(
+  input: string
+): { [columnName: string]: string | undefined }[] {
+  return parseCSV(input);
+}
+const typeSafeProducts = parseCSV(example1CSV) as unknown as ProductRow[];
+
+console.log(typeSafeProducts);
