@@ -87,6 +87,21 @@ function saveParseCSV(
 ): { [columnName: string]: string | undefined }[] {
   return parseCSV(input);
 }
-const typeSafeProducts = parseCSV(example1CSV) as unknown as ProductRow[];
 
-console.log(typeSafeProducts);
+// Type safe now but I will not get autocompletion or documentation on possible fields
+const typeSafeProducts = saveParseCSV(example1CSV);
+
+console.log(typeSafeProducts[0].name);
+
+// Not in the book but seems like a good way to get best of both worls
+
+interface SaferProductRow {
+  productId: number | undefined;
+  name: string | undefined;
+  price: string | undefined;
+}
+
+const typeSafeProducts2 = parseCSV(example1CSV) as unknown as SaferProductRow[];
+
+// Now this will throw an error without "?" because "name" might be undefined
+console.log(typeSafeProducts2[0].name?.length);
