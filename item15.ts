@@ -67,3 +67,17 @@ Bob,22,Chicago`;
 
 const parsedCSV = parseCSV(example1CSV);
 console.log(parsedCSV);
+
+interface ProductRow {
+  productId: number;
+  name: string;
+  price: string;
+}
+
+declare let csvData: ProductRow[];
+
+/*
+ *Technically possible although in my case ProductRow is not matching the CSV data structure
+ * Being careful to not make assumptions about the data structure would be beneficial
+ */
+const products = parseCSV(example1CSV) as unknown as ProductRow[];
