@@ -137,3 +137,7 @@ type Vec3D = Record<"x" | "y" | "z", number>;
 const testing: Vec3D = { x: 1, y: 1, z: 2 };
 
 testing["b"] = "hey"; // Actually allowed
+
+type MappedVec3D = { [k in "x" | "y" | "z"]: number }; // Same as Vec3D
+
+type ABC = { [k in "a" | "b" | "c"]: k extends "b" ? string : number }; // Very cool
