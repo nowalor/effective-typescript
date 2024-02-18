@@ -129,3 +129,11 @@ console.log(test1.b?.toString()); // In this example "b" is possibly undefined s
 
 console.log(test2.b.toString()); // TypeScript knows the type is { a: number, b: number }
 // console.log(test2.c?.toString()) 'Property 'c' does not exist on type '{ a: number; b: number; }'
+
+/* ------------------------------------- */
+
+type Vec3D = Record<"x" | "y" | "z", number>;
+
+const testing: Vec3D = { x: 1, y: 1, z: 2 };
+
+testing["b"] = "hey"; // Actually allowed
