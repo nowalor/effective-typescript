@@ -105,3 +105,27 @@ const typeSafeProducts2 = parseCSV(example1CSV) as unknown as SaferProductRow[];
 
 // Now this will throw an error without "?" because "name" might be undefined
 console.log(typeSafeProducts2[0].name?.length);
+
+/* ------------------------------------- */
+
+interface Row2 {
+  a: number;
+  b?: number;
+  c?: number;
+  d?: number;
+}
+
+// Most precise but not so convenient to work with
+type Row3 =
+  | { a: number }
+  | { a: number; b: number }
+  | { a: number; b: number; c: number }
+  | { a: number; b: number; c: number; d: number };
+
+const test1: Row2 = { a: 123, b: 123 };
+const test2: Row3 = { a: 123, b: 123 };
+
+console.log(test1.b?.toString()); // In this example "b" is possibly undefined so "?" needed before toString operation
+
+console.log(test2.b.toString()); // TypeScript knows the type is { a: number, b: number }
+// console.log(test2.c?.toString()) 'Property 'c' does not exist on type '{ a: number; b: number; }'
