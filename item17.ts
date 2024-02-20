@@ -88,3 +88,32 @@ function typeSafeArraySum(array: readonly number[]) {
 
   return sum;
 }
+
+/* ---------------------------------------- */
+function parseTaggedText(lines: string[]): string[][] {
+  const paragraphs: string[][] = [];
+  const currPar: string[] = [];
+
+  const addParagraph = () => {
+    if (currPar.length) {
+      paragraphs.push(currPar);
+      currPar.length = 0;
+    }
+  };
+
+  for (const line of lines) {
+    if (!line) {
+      addParagraph();
+    } else {
+      currPar.push(line);
+    }
+  }
+
+  addParagraph();
+  return paragraphs;
+}
+
+const testInput = [
+  ["test", "test2", ""],
+  ["test3", "test4"],
+];
