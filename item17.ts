@@ -102,7 +102,7 @@ function parseTaggedText(lines: string[]): string[][] {
   };
 
   for (const line of lines) {
-    if (!line) {
+    if (!line.length) {
       addParagraph();
     } else {
       currPar.push(line);
@@ -113,7 +113,31 @@ function parseTaggedText(lines: string[]): string[][] {
   return paragraphs;
 }
 
-const testInput = [
-  ["test", "test2", ""],
-  ["test3", "test4"],
-];
+/* function typeSafeParseTaggedText(lines: string[]): string[][] {
+  let currPar: readonly string[] = [];
+
+  const paragraphs: string[][] = [];
+
+  const addParagraph = () => {
+    if (currPar.length) {
+      currPar = paragraphs.push(currPar);
+      currPar = [];
+    }
+  };
+
+  for (const line of lines) {
+    if (!line.length) {
+      addParagraph();
+    } else {
+      currPar.push(line);
+    }
+  }
+
+  addParagraph();
+  return paragraphs;
+}
+*/
+const testInput = ["test", "test2", "", "test4", "test5", "", "hey"];
+
+const paragraphs = parseTaggedText(testInput);
+console.log(paragraphs);
