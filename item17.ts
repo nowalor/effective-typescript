@@ -90,6 +90,7 @@ function typeSafeArraySum(array: readonly number[]) {
 }
 
 /* ---------------------------------------- */
+// A more complicated example to revisit later
 function parseTaggedText(lines: string[]): string[][] {
   const paragraphs: string[][] = [];
   const currPar: string[] = [];
