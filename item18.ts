@@ -37,3 +37,14 @@ const REQUIRES_UPDATE: { [k in keyof ScatterProps]: boolean } = {
 
   onClick: false,
 };
+
+// Mapped type solve it
+function newShouldUpdate(oldProps: ScatterProps, newProps: ScatterProps) {
+  let k: keyof ScatterProps;
+
+  for (k in oldProps) {
+    if (oldProps[k] === newProps[k] && REQUIRES_UPDATE[k]) {
+      return true;
+    }
+  }
+}
