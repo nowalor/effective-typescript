@@ -16,7 +16,6 @@ function foo(x?: number | string | null) {
 /*
  * This is a pattern known as a "tagged union" or "discriminated union"
  */
-
 interface UploadEvent {
   type: "upload";
   filename: string;
