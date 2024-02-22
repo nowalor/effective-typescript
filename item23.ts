@@ -12,3 +12,27 @@ function foo(x?: number | string | null) {
      */
   }
 }
+
+/*
+ * This is a pattern known as a "tagged union" or "discriminated union"
+ */
+
+interface UploadEvent {
+  type: "upload";
+  filename: string;
+  contents: string;
+}
+
+interface DownloadEvent {
+  type: "download";
+  filename: string;
+}
+
+function handleEvent(e: UploadEvent | DownloadEvent) {
+  switch (e.type) {
+    case "download":
+    // Type is DownloadEvent
+    case "upload":
+    // Type is UploadEvent
+  }
+}
