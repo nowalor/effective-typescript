@@ -42,6 +42,7 @@ function handleEvent(e: UploadEvent | DownloadEvent) {
  *This pattern is known as a user-defined type guard
  * : el is HTMLInputElement  tells the type checker it can narrow the type
  */
+/*
 function isInputElement(el: HTMLElement): el is HTMLInputElement {
   return "value" in el;
 }
@@ -53,3 +54,26 @@ function getElementContents(el: HTMLElement) {
     el; //: HTMLElement
   }
 }
+*/
+
+/* ----------------------------------------------------------------------*/
+const jackson5 = ["Janet", "Micheal", "Nikulas", "Joseph", " Daniel"];
+
+const members = ["Janet", "Micheal"].map((who) =>
+  jackson5.find((m) => m === who)
+); // type is (string | undefined)[]
+
+// type is still(string | undefined)[]
+const filteredMembers = members.filter((who) => who !== undefined);
+
+function isDefined<T>(x: T | undefined): x is T {
+  return x !== undefined;
+}
+
+/*
+ * Now the type is finally string[]
+ * User defined type guard return hint helps the type checker
+ */
+const filteredMembers2 = members.filter(isDefined);
+
+console.log(members);
