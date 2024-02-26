@@ -35,3 +35,21 @@ function handleEvent(e: UploadEvent | DownloadEvent) {
     // Type is UploadEvent
   }
 }
+
+/* ----------------------------------------------------------------------*/
+
+/*
+ *This pattern is known as a user-defined type guard
+ *
+ */
+function isInputElement(el: HTMLElement): el is HTMLInputElement {
+  return "value" in el;
+}
+
+function getElementContents(el: HTMLElement) {
+  if (isInputElement(el)) {
+    el; //: HTMLInputElement
+  } else {
+    el; //: HTMLElement
+  }
+}
