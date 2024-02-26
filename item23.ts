@@ -40,7 +40,7 @@ function handleEvent(e: UploadEvent | DownloadEvent) {
 
 /*
  *This pattern is known as a user-defined type guard
- *
+ * : el is HTMLInputElement  tells the type checker it can narrow the type
  */
 function isInputElement(el: HTMLElement): el is HTMLInputElement {
   return "value" in el;
