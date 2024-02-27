@@ -12,3 +12,13 @@ async function fetchPages() {
     fetch("https://google.com"),
   ]);
 }
+
+async function timeout(millis: number): Promise<never> {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => reject("timeout"), millis);
+  });
+}
+
+async function fetWithTimeout(url: string, ms: number) {
+  return Promise.race([fetch(url), timeout(ms)]);
+}
