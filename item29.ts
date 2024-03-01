@@ -18,3 +18,8 @@ interface Camera {
 interface CameraOptions extends Omit<Partial<Camera>, "center"> {
   center?: LngLat;
 }
+
+type LngLagBounds =
+  | { northeast: LngLatLike; southwest: LngLatLike }
+  | [LngLatLike, LngLatLike]
+  | [number, number, number, number];
